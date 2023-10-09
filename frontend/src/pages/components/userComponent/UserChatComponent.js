@@ -17,7 +17,7 @@ export const UserChatComponent = () => {
           <div className="chat-msg">
             {Array.from({ length: 20 }).map((_, id) => {
               return (
-                <div>
+                <div key={id}>
                   <p>
                     <b>You wrote:</b> Hello, world!
                   </p>
