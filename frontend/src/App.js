@@ -41,7 +41,7 @@ function App() {
           <Route path="/user/orders" element={<UserOrdersPage />} />
           <Route path="/user/cart" element={<UserCartPage />} />
         </Route>
-        {/* User Protected routes */}
+        {/* User Protected routes X */}
         <Route element={<ProtectedRoutes admin={true} />}>
           <Route path="/operator/profile" element={<OperatorProfilePage />} />
           <Route
