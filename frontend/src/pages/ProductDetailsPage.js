@@ -64,10 +64,14 @@ export const ProductDetailsPage = () => {
             <Col className="mt-5">
               <h5>REVIEWS</h5>
               <ListGroup variant="flush">
-                <ListGroup.Item>TEST</ListGroup.Item>
-                <ListGroup.Item>TEST</ListGroup.Item>
-                <ListGroup.Item>TEST</ListGroup.Item>
-                <ListGroup.Item>TEST</ListGroup.Item>
+                {Array.from({length:10}).map((item, index) => (
+                  <ListGroup.Item key={index}>
+                    John Doe <br/>
+                    <Rating readonly size={20} initialValue={4}/> <br/>
+                    20-09-2021 <br/>
+                    Test
+                  </ListGroup.Item>
+                ))}
               </ListGroup>
             </Col>
           </Row>
