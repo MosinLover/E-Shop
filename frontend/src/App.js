@@ -40,6 +40,7 @@ function App() {
           <Route path="/user/profile" element={<UserProfilePage />} />
           <Route path="/user/orders" element={<UserOrdersPage />} />
           <Route path="/user/cart" element={<UserCartPage />} />
+          <Route path="/user/order-details" element={ <></>} />
         </Route>
         {/* User Protected routes X */}
         <Route element={<ProtectedRoutes admin={true} />}>
