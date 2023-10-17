@@ -21,6 +21,7 @@ import { FooterComponent } from "./pages/components/FooterComponent";
 import { RouteWithUserChatComponent } from "./pages/components/userComponent/RouteWithUserChatComponent";
 
 import { ScrollToTop } from "./utils/ScrollToTop";
+import { UserOrdersDetailsPage } from "./pages/user/UserOrdersDetailsPage";
 function App() {
   return (
     <BrowserRouter>
@@ -40,7 +41,10 @@ function App() {
           <Route path="/user/profile" element={<UserProfilePage />} />
           <Route path="/user/orders" element={<UserOrdersPage />} />
           <Route path="/user/cart" element={<UserCartPage />} />
-          <Route path="/user/order-details" element={ <></>} />
+          <Route
+            path="/user/order-details"
+            element={<UserOrdersDetailsPage />}
+          />
         </Route>
         {/* User Protected routes X */}
         <Route element={<ProtectedRoutes admin={true} />}>
