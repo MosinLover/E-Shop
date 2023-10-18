@@ -37,7 +37,7 @@ export const OperatorUsersPage = () => {
                   </td>
                   <td>PayPal</td>
                   <td>
-                    <LinkContainer to="/operator/order-details">
+                    <LinkContainer to="/operator/edit-user">
                       <Button className="btn-sm">
                         <i className="bi bi-pencil-square"></i>
                       </Button>

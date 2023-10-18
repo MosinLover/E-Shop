@@ -28,6 +28,7 @@ import { OperatorOrderDetailsPage } from "./pages/operator/OperatorOrderDetailsP
 import { OperatorCreateProductPage } from "./pages/operator/OperatorCreateProductPage";
 import { OperatorEditProductPage } from "./pages/operator/OperatorEditProductPage";
 import { OperatorUsersPage } from "./pages/operator/OperatorUsersPage";
+import { OperatorChatsPage } from "./pages/operator/OperatorChatsPage";
 function App() {
   return (
     <BrowserRouter>
@@ -60,11 +61,9 @@ function App() {
           <Route path="/operator/orders-details" element={<OperatorOrderDetailsPage />} />
           <Route path="/operator/create-new-product" element={<OperatorCreateProductPage />} />
           <Route path="/operator/edit-product" element={<OperatorEditProductPage />} />
+          <Route path="/operator/edit-user" element={<OperatorEditUserPage />} />
           <Route path="/operator/users-list" element={<OperatorUsersPage />} />
-          <Route
-            path="/operator/edit-user"
-            element={<OperatorEditUserPage />}
-          />
+          <Route path="/operator/chats" element={<OperatorChatsPage />} />
           <Route
             path="/operator/analytics"
             element={<OperatorAnalyticsPage />}
