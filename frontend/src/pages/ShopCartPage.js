@@ -24,7 +24,7 @@ export const ShopCartPage = () => {
               Price: <span className="fw-bold">$892</span>
             </ListGroup.Item>
             <ListGroup.Item>
-              <LinkContainer to="/user/order-details">
+              <LinkContainer to="/user/cart-details">
                 <Button type="button">Proceed to Check out</Button>
               </LinkContainer>
             </ListGroup.Item>
@@ -35,4 +35,3 @@ export const ShopCartPage = () => {
   );
 };
 
-// export default ShopCartPage;

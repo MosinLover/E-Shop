@@ -14,7 +14,7 @@ import { ProtectedRoutes } from "./pages/components/ProtectedRoutes";
 import { OperatorProfilePage } from "./pages/operator/OperatorProfilePage";
 import { OperatorAnalyticsPage } from "./pages/operator/OperatorAnalyticsPage";
 import { OperatorEditUserPage } from "./pages/operator/OperatorEditUserPage";
-import { OperatorProductPage } from "./pages/operator/OperatorProductPage";
+import { OperatorProductsPage } from "./pages/operator/OperatorProductsPage";
 import { HeaderComponent } from "./pages/components/HeaderComponent";
 import { FooterComponent } from "./pages/components/FooterComponent";
 
@@ -22,6 +22,12 @@ import { RouteWithUserChatComponent } from "./pages/components/userComponent/Rou
 
 import { ScrollToTop } from "./utils/ScrollToTop";
 import { UserOrdersDetailsPage } from "./pages/user/UserOrdersDetailsPage";
+import { UserCartDetailsPage } from "./pages/user/UserCartDetailsPage";
+import { OperatorOrdersPage } from "./pages/operator/OperatorOrdersPage";
+import { OperatorOrderDetailsPage } from "./pages/operator/OperatorOrderDetailsPage";
+import { OperatorCreateProductPage } from "./pages/operator/OperatorCreateProductPage";
+import { OperatorEditProductPage } from "./pages/operator/OperatorEditProductPage";
+import { OperatorUsersPage } from "./pages/operator/OperatorUsersPage";
 function App() {
   return (
     <BrowserRouter>
@@ -41,6 +47,7 @@ function App() {
           <Route path="/user/profile" element={<UserProfilePage />} />
           <Route path="/user/orders" element={<UserOrdersPage />} />
           <Route path="/user/cart" element={<UserCartPage />} />
+          <Route path="/user/cart-details" element={<UserCartDetailsPage />} />
           <Route
             path="/user/order-details"
             element={<UserOrdersDetailsPage />}
@@ -49,6 +56,11 @@ function App() {
         {/* User Protected routes X */}
         <Route element={<ProtectedRoutes admin={true} />}>
           <Route path="/operator/profile" element={<OperatorProfilePage />} />
+          <Route path="/operator/orders" element={<OperatorOrdersPage />} />
+          <Route path="/operator/orders-details" element={<OperatorOrderDetailsPage />} />
+          <Route path="/operator/create-new-product" element={<OperatorCreateProductPage />} />
+          <Route path="/operator/edit-product" element={<OperatorEditProductPage />} />
+          <Route path="/operator/users-list" element={<OperatorUsersPage />} />
           <Route
             path="/operator/edit-user"
             element={<OperatorEditUserPage />}
@@ -58,8 +70,8 @@ function App() {
             element={<OperatorAnalyticsPage />}
           />
           <Route
-            path="/operator/product-details"
-            element={<OperatorProductPage />}
+            path="/operator/product-list"
+            element={<OperatorProductsPage />}
           />
         </Route>
       </Routes>
