@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const Review = require("./ReviewModel");
+const Image = require("./ImageModel");
 const productSchema = mongoose.Schema({
     name: {
         type: String, 
@@ -36,14 +38,21 @@ const productSchema = mongoose.Schema({
         {key: {type: String}, value: {type: String}}
         // [{key: "color", value: "red" }, {key: "size", value: "1 TB"}]
     ],
-    images: [],
-    reviews: [],
+    images: [Image],
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: Review,
+        }
+    ],
 }, {
     timestamps: true,
 
 })
-
-productSchema.index();
 const Product = mongoose.model("Product", productSchema);
+
+productSchema.index({name: "text", description: "text"}, {name: "TestIndex"});
+productSchema.index({"attrs.key": 1, "attrs.value":1})
+
 
 module.exports = Product;
