@@ -4,15 +4,29 @@ const port = 3000;
 
 const apiRoutes = require("./routes/apiRoutes");
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
     res.json({message: "API INCOMING"});
 })
 
+
+
+// MONGODB CONNECTION
+const connectDB = require("./config/db");
+connectDB();
+
 app.use('/api', apiRoutes);
 
-// app.get('/product', (req, res) => {
-//     res.send("product request");
-// })
+app.use((error, req, res, next) => {
+    console.log(error);
+    next(error);
+})
+
+app.use((error, req, res, next) => {
+    res.status(500).json({
+        message: error.message,
+        stack: error.stack
+    })
+})
 
 
 app.listen(port, () => {
