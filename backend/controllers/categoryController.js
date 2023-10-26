@@ -8,4 +8,25 @@ const getCategories = async (req, res, next) => {
         next(error)
     }
 }
-module.exports = getCategories;
+
+const newCategory = async (req, res, next) => {
+    try {
+        const {category} = req.body;
+        if (!category) {
+            res.status(400).send("Category input is required");
+        }
+        const categoryExists = await Category.findOne({name: category});
+        if (categoryExists) {
+            res.status(400).send("Category already exist");
+        } else {
+            const categoryCreated = await Category.create({
+                name: category
+            })
+            res.status()
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {getCategories, newCategory};
