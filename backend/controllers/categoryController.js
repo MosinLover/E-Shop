@@ -22,7 +22,7 @@ const newCategory = async (req, res, next) => {
             const categoryCreated = await Category.create({
                 name: category
             })
-            res.status()
+            res.status(201).send({categoryCreated:categoryCreated});
         }
     } catch (error) {
         next(error)
