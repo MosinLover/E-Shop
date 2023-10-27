@@ -30,7 +30,6 @@ const newCategory = async (req, res, next) => {
 }
 
 const deleteCategory = async (req, res, next) => {
-    // return res.send(req.params.category);
     try {
         if(req.params.category !== "Choose category") {
             const categoryExists = await Category.findOne({
@@ -44,4 +43,37 @@ const deleteCategory = async (req, res, next) => {
     }
 }
 
-module.exports = {getCategories, newCategory, deleteCategory};
+const saveAttr = async (req, res, next) => {
+    const {key, val, categoryChoosen} = req.body;
+    if(!key || !val || !categoryChoosen) {
+        return res.status(400).send("all inputs are required");
+    } 
+    try {
+        const category = categoryChoosen.split("/")[0];
+        const categoryExists = await Category.findOne({name: category}).orFail(); 
+        if (categoryExists.attrs.length > 0) {
+            var keyDoesNotExistsInDatabase = true;
+            categoryExists.attrs.map((item, index) => {
+                if(item.key === key) {
+                    keyDoesNotExistsInDatabase = false;
+                    var copyAttributeValues = [...categoryExists.attrs[index].value];
+                    copyAttributeValues.push(val)
+                    var newAttributeValues = [...new Set(copyAttributeValues)];
+                    categoryExists.attrs[index].value = newAttributeValues;
+                }
+            })
+            if (keyDoesNotExistsInDatabase) {
+                categoryExists.attrs.push({key: key, value: [val]})
+            }
+        } else {
+            categoryExists.attrs.push({key: key, value: [val]})
+        }
+        await categoryExists.save();
+        let cat = await Category.find({}).sort({name: "asc"});
+        return res.status(201).json({categoriesUpdated: cat});
+    } catch(error) {
+        next(error);
+    }
+}
+
+module.exports = {getCategories, newCategory, deleteCategory, saveAttr};
